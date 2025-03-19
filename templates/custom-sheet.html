@@ -1,0 +1,84 @@
+<form class="{{cssClass}} flexcol" autocomplete="off">
+    <header class="sheet-header">
+        <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100"/>
+        <div class="header-fields">
+            <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Name"/></h1>
+            <div class="grid grid-2col">
+                <div class="resource">
+                    <label>Divine Power</label>
+                    <input type="text" name="system.divinePower.value" value="{{system.divinePower.value}}" data-dtype="Number"/>
+                    <span class="resource-max">/</span>
+                    <input type="text" name="system.divinePower.max" value="{{system.divinePower.max}}" data-dtype="Number"/>
+                </div>
+                <div class="resource">
+                    <label>Followers</label>
+                    <input type="text" name="system.followers.value" value="{{system.followers.value}}" data-dtype="Number"/>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    {{!-- Sheet Tab Navigation --}}
+    <nav class="sheet-tabs tabs" data-group="primary">
+        <a class="item" data-tab="attributes">Attributes</a>
+        <a class="item" data-tab="domains">Divine Domains</a>
+        <a class="item" data-tab="miracles">Miracles</a>
+        <a class="item" data-tab="description">Description</a>
+    </nav>
+
+    {{!-- Sheet Body --}}
+    <section class="sheet-body">
+        {{!-- Attributes Tab --}}
+        <div class="tab attributes" data-group="primary" data-tab="attributes">
+            <div class="grid grid-3col">
+                <div class="ability">
+                    <label>Influence</label>
+                    <input type="text" name="system.abilities.influence.value" value="{{system.abilities.influence.value}}" data-dtype="Number"/>
+                </div>
+                <div class="ability">
+                    <label>Wisdom</label>
+                    <input type="text" name="system.abilities.wisdom.value" value="{{system.abilities.wisdom.value}}" data-dtype="Number"/>
+                </div>
+                <div class="ability">
+                    <label>Power</label>
+                    <input type="text" name="system.abilities.power.value" value="{{system.abilities.power.value}}" data-dtype="Number"/>
+                </div>
+            </div>
+        </div>
+
+        {{!-- Divine Domains Tab --}}
+        <div class="tab domains" data-group="primary" data-tab="domains">
+            <div class="form-group">
+                <label>Primary Domain</label>
+                <input type="text" name="system.domains.primary" value="{{system.domains.primary}}"/>
+            </div>
+            <div class="form-group">
+                <label>Secondary Domains</label>
+                {{#each system.domains.secondary as |domain id|}}
+                <input type="text" name="system.domains.secondary.{{id}}" value="{{domain}}"/>
+                {{/each}}
+            </div>
+        </div>
+
+        {{!-- Miracles Tab --}}
+        <div class="tab miracles" data-group="primary" data-tab="miracles">
+            <ol class="items-list">
+                {{#each actor.miracles as |miracle id|}}
+                <li class="item flexrow" data-item-id="{{miracle._id}}">
+                    <img src="{{miracle.img}}" title="{{miracle.name}}" width="24" height="24"/>
+                    <h4 class="item-name">{{miracle.name}}</h4>
+                    <div class="item-controls">
+                        <a class="item-control item-edit" title="Edit Miracle"><i class="fas fa-edit"></i></a>
+                        <a class="item-control item-delete" title="Delete Miracle"><i class="fas fa-trash"></i></a>
+                    </div>
+                </li>
+                {{/each}}
+            </ol>
+        </div>
+
+        {{!-- Description Tab --}}
+        <div class="tab description" data-group="primary" data-tab="description">
+            {{editor system.description target="system.description" button=true owner=owner editable=editable}}
+        </div>
+    </section>
+</form> 

@@ -1,0 +1,31 @@
+{
+  "id": "godstein-character-sheet",
+  "title": "Godstein God Character Sheets",
+  "description": "Character Sheets for Gods when running a Godstein Campaign",
+  "authors": [
+    {
+      "name": "Ciryc"
+    }
+  ],
+  "version": "1.0.0",
+  "compatibility": {
+    "minimum": "11",
+    "verified": "13"
+  },
+  "esmodules": [
+    "scripts/character-sheet.js"
+  ],
+  "styles": [
+    "styles/godstein.css"
+  ],
+  "templates": [
+    "templates/custom-sheet.html"
+  ],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    }
+  ]
+}
