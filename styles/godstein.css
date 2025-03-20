@@ -4,30 +4,25 @@
 }
 
 .godstein .sheet-header {
-    flex: 0 0 100px;
+    flex: 0 0 auto;
     border-bottom: 2px solid #000;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: flex-start;
     margin-bottom: 10px;
 }
 
-.godstein .sheet-header .profile-img {
-    flex: 0 0 100px;
-    height: 100px;
-    margin-right: 10px;
-}
-
 .godstein .sheet-header .header-fields {
-    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
 }
 
 .godstein .sheet-header h1.charname {
+    width: 100%;
     height: 50px;
     padding: 0px;
     margin: 5px 0;
     border-bottom: 0;
+    text-align: center;
 }
 
 .godstein .sheet-header h1.charname input {
@@ -36,28 +31,91 @@
     margin: 0;
 }
 
-.godstein .resource {
-    width: 50%;
-    height: 40px;
+.godstein .sheet-header .profile-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 10px 0;
+}
+
+.godstein .sheet-header .profile-img {
+    width: 100px;
+    height: 100px;
+    border: 2px solid #000;
+    border-radius: 5px;
+}
+
+.godstein .sheet-header .grid {
+    width: 100%;
     margin-top: 10px;
-    float: left;
+    gap: 15px;
+    padding: 0 10px;
+}
+
+.godstein .sheet-header .grid-2col .form-group {
+    margin: 5px 10px;
+}
+
+.godstein .resource {
+    width: 100%;
+    height: 40px;
     text-align: center;
+    margin-bottom: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.godstein .resource-inputs {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
 }
 
 .godstein .resource input {
-    width: 100px;
-    height: 28px;
+    width: 40px;
+    text-align: center;
+    display: inline-block;
+}
+
+.godstein .resource-max {
+    margin: 0 3px;
+    font-weight: bold;
+}
+
+.godstein .alignment {
+    width: 100%;
+    margin-bottom: 5px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.godstein .alignment input {
+    width: 80%;
+    text-align: center;
 }
 
 .godstein .tabs {
     height: 40px;
     border-top: 1px solid #AAA;
     border-bottom: 1px solid #AAA;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin: 5px 0;
+    flex: 0;
 }
 
 .godstein .tabs .item {
     line-height: 40px;
     font-weight: bold;
+    margin: 0 10px;
+    padding: 0 5px;
+    white-space: nowrap;
 }
 
 .godstein .tabs .item.active {
@@ -76,12 +134,20 @@
 
 .godstein .grid {
     display: grid;
-    gap: 10px;
-    margin: 10px 0;
+    margin: 5px 0;
     padding: 0;
 }
 
 .godstein .grid-2col {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.godstein .grid-2col-description {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.godstein .grid-2col-header {
     grid-template-columns: repeat(2, 1fr);
 }
 
@@ -135,12 +201,12 @@
 }
 
 .godstein .form-group {
-    margin: 10px 0;
+    margin: 5px 0px 10px 0px;
 }
 
 .godstein .form-group label {
     font-weight: bold;
-    margin-bottom: 5px;
+    margin: 0px 0px 5px 0px;
     display: block;
 }
 
@@ -150,4 +216,430 @@
     border: 1px solid #7a7971;
     border-radius: 3px;
     padding: 0 5px;
+}
+
+.godstein .orders-list {
+    list-style: none;
+    margin: 0;
+    padding: 10px;
+}
+
+.godstein .order-add {
+    margin-bottom: 20px;
+}
+
+.godstein .add-order {
+    width: 100%;
+    padding: 8px;
+    color: black;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.godstein .add-order:hover {
+    background: #555;
+}
+
+.godstein .order-item {
+    padding: 8px;
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.godstein .order-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #ddd;
+}
+
+.godstein .order-time {
+    font-size: 0.9em;
+    color: #666;
+}
+
+.godstein .order-content {
+    flex: 1;
+}
+
+.godstein .order-title {
+    width: 100%;
+    padding: 4px 8px;
+    border: 1px solid #7a7971;
+    border-radius: 3px;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.godstein .order-summary {
+    width: 100%;
+    padding: 4px 8px;
+    border: 1px solid #7a7971;
+    border-radius: 3px;
+    margin-bottom: 8px;
+    resize: vertical;
+}
+
+.godstein .order-title-text {
+    font-weight: bold;
+    font-size: 1.1em;
+    margin-bottom: 8px;
+}
+
+.godstein .order-summary-text {
+    margin-bottom: 8px;
+    white-space: pre-wrap;
+}
+
+.godstein .order-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px solid #ddd;
+}
+
+.godstein .order-executed {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #666;
+    font-size: 0.9em;
+}
+
+.godstein .order-executed input[type="checkbox"] {
+    margin: 0;
+}
+
+.godstein .order-status {
+    font-size: 0.9em;
+    color: #4a934a;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.godstein .order-status.executed {
+    font-size: 0.9em;
+    color: #4a4a93;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.godstein .order-executed input[type="checkbox"]:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.godstein .order-controls {
+    display: flex;
+    gap: 8px;
+}
+
+.godstein .order-accept {
+    background: #4a934a;
+    color: white;
+    border: none;
+    padding: 4px 8px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.godstein .order-accept:hover {
+    background: #3a833a;
+}
+
+.godstein .order-delete {
+    color: #a00;
+    cursor: pointer;
+}
+
+.godstein .order-delete:hover {
+    color: #800;
+}
+
+/* Remove flex: 1 from flexrow and adjust other flex properties */
+.flexrow {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.flexcol {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+.godstein .sheet-navigation {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    margin: 5px 0;
+    border-top: 1px solid #AAA;
+    border-bottom: 1px solid #AAA;
+    position: relative;
+    flex: 0;
+}
+
+.godstein .nav-arrow {
+    flex: 0 0 30px;
+    height: 100%;
+    border: none;
+    color: black;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.godstein .nav-arrow:hover {
+    background: rgba(0, 0, 0, 0.1);
+    color: #000;
+}
+
+.godstein .nav-arrow.hidden {
+    display: none;
+}
+
+.godstein .tabs-wrapper {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+}
+
+.godstein .sheet-tabs {
+    display: flex;
+    flex-wrap: nowrap;
+    width: fit-content;
+    min-width: 100%;
+    height: 40px;
+    transition: transform 0.3s ease;
+    user-select: none;
+    cursor: grab;
+}
+
+.godstein .sheet-tabs.dragging {
+    cursor: grabbing;
+    transition: none;
+}
+
+.godstein .sheet-tabs .item {
+    flex: 0 0 auto;
+    margin: 0 10px;
+    line-height: 40px;
+    white-space: nowrap;
+}
+
+.godstein .domain-select {
+    width: 100%;
+    height: 28px;
+    border: 1px solid #7a7971;
+    border-radius: 3px;
+    padding: 0 5px;
+    background-color: rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+}
+
+.godstein .domain-select:hover {
+    border-color: #000;
+}
+
+.godstein .domain-select:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    border-color: #000;
+}
+
+.godstein .biomes {
+    margin: 5px 0;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.godstein .biome-options {
+    display: flex;
+    flex-direction: column;
+}
+
+.godstein .biome-row {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.godstein .top-row {
+    justify-content: space-between;
+    width: 100%;
+}
+
+.godstein .bottom-row {
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.godstein .checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    flex: 0 0 auto;
+}
+
+.godstein .checkbox-label.crossed-out {
+    color: red;
+}
+
+/* Add X styling for crossed-out checkboxes */
+.godstein .checkbox-label.crossed-out input[type="checkbox"] {
+    position: relative;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 16px;
+    height: 16px;
+    border: 1px solid #7a7971;
+    border-radius: 3px;
+    background-color: #fff;
+    vertical-align: middle;
+}
+
+.godstein .checkbox-label.crossed-out input[type="checkbox"]::before {
+    content: "✕";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 12px;
+    color: #a00;
+}
+
+.godstein .checkbox-label input[type="checkbox"] {
+    width: auto;
+    height: auto;
+    margin: 0;
+}
+
+.godstein input[type="text"] {
+    height: 32px;
+    padding: 4px 4px;
+    border: 1px solid #7a7971;
+    border-radius: 3px;
+    width: 80%;
+}
+
+.godstein input[type="number"] {
+    height: 32px;
+    padding: 0px 0px;
+    border: 1px solid #7a7971;
+    border-radius: 3px;
+    width: 15%;
+}
+
+.godstein .form-group label {
+    margin: 0px 0px 5px 0px;
+    display: block;
+}
+
+/* Improved textarea styles */
+.godstein textarea {
+    width: 100%;
+    min-height: 200px;
+    padding: 8px;
+    border: 1px solid #7a7971;
+    border-radius: 3px;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: 1.4;
+    color: inherit;
+    resize: vertical;
+    /* background-color: rgba(255, 255, 255, 0.8); */
+    margin-top: 5px;
+}
+
+.godstein textarea:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    border-color: #000;
+}
+
+.godstein .tab.divine-artifact textarea,
+.godstein .tab.description textarea {
+    margin-top: 5px;
+}
+
+/* Notes section styling */
+.godstein .notes-section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.godstein .notes-section label {
+    margin-bottom: 5px;
+    text-align: left;
+    align-self: flex-start;
+    font-weight: bold;
+    padding-left: 0px;
+}
+
+.godstein .notes-container {
+    width: 100%;
+    height: 500px;
+}
+
+/* Editor styling */
+.godstein .editor {
+    border: 1px solid #7a7971;
+    border-radius: 3px;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.godstein .editor-container {
+    min-height: 200px;
+    padding: 8px;
+}
+
+/* Fix height and scrolling issues */
+.godstein .tab.description {
+    height: auto;
+    min-height: 100%;
+    padding-bottom: 20px;
+}
+
+/* Add specific styling for form groups within the grid */
+.godstein .grid-2col .form-group {
+    margin: 10px;
+    padding: 0 5px;
+}
+
+/* Description tab specific styling */
+.godstein .tab.description .grid-2col {
+    margin-bottom: 15px;
+}
+
+.godstein .tab.description .form-group {
+    margin-bottom: 15px;
+}
+
+.godstein .tab.description .biomes {
+    margin-top: 15px;
+    margin-bottom: 25px;
+}
+
+.godstein .tab.description .notes-section {
+    margin-top: 20px;
 } 

@@ -1,0 +1,57 @@
+version: '3.8'
+
+services:
+  foundry:
+    image: felddy/foundryvtt:12.331
+    hostname: foundry
+    init: true
+    restart: unless-stopped
+    volumes:
+      - type: bind
+        source: ./module.json
+        target: /data/Data/modules/godstein-character-sheet/module.json
+      - type: bind
+        source: ./scripts
+        target: /data/Data/modules/godstein-character-sheet/scripts
+      - type: bind
+        source: ./styles
+        target: /data/Data/modules/godstein-character-sheet/styles
+      - type: bind
+        source: ./templates
+        target: /data/Data/modules/godstein-character-sheet/templates
+      - type: bind
+        source: ./lang
+        target: /data/Data/modules/godstein-character-sheet/lang
+      - type: bind
+        source: ${FOUNDRY_DATA_PATH:-/home/steven/.local/share/FoundryVTT}
+        target: /data
+      - type: bind
+        source: ${FOUNDRY_RELEASE_PATH:-/home/steven/.local/share/FoundryVTT/FoundryVTT-12.331.zip}
+        target: /home/foundry/foundryvtt.zip
+      - type: bind
+        source: ${FOUNDRY_LICENSE_PATH:-/home/steven/.local/share/FoundryVTT/license.json}
+        target: /data/Config/license.json
+    environment:
+      - FOUNDRY_USERNAME
+      - FOUNDRY_PASSWORD
+      - FOUNDRY_ADMIN_KEY
+      - CONTAINER_PRESERVE_CONFIG=true
+      - CONTAINER_PRESERVE_OWNER=true
+      - CONTAINER_CACHE=/data/container_cache
+      - FOUNDRY_HOSTNAME=
+      - FOUNDRY_PROXY_PORT=
+      - FOUNDRY_SSL_CERT=
+      - FOUNDRY_SSL_KEY=
+      - NODE_OPTIONS=--trace-warnings
+      - DEBUG=*
+      - CONTAINER_RETRY_COUNT=3
+      - CONTAINER_RETRY_DELAY=5
+      - FOUNDRY_RELEASE_URL=file:///home/foundry/foundryvtt.zip
+      - FOUNDRY_UID=1000
+      - FOUNDRY_GID=1001
+    ports:
+      - "30000:30000"
+
+volumes:
+  foundry_data:
+    name: foundry_data
