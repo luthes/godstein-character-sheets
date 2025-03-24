@@ -1,13 +1,13 @@
 {
   "id": "godstein-character-sheet",
   "title": "Godstein God Character Sheets",
-  "description": "Character Sheets for Gods when running a Godstein Campaign",
+  "description": "Character Sheets for Gods when running a Godstein Worldbuilding Campaign",
   "authors": [
     {
       "name": "Ciryc"
     }
   ],
-  "version": "1.0.0",
+  "version": "1.0.1",
   "compatibility": {
     "minimum": "12",
     "verified": "12.331",
