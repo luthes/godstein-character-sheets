@@ -1,13 +1,13 @@
 {
   "id": "godstein-character-sheet",
   "title": "Godstein God Character Sheets",
-  "description": "Character Sheets for Gods when running a Godstein Campaign",
+  "description": "Character Sheets for Gods when running a Godstein Worldbuilding Campaign",
   "authors": [
     {
       "name": "Ciryc"
     }
   ],
-  "version": "1.0.0",
+  "version": "1.0.1",
   "compatibility": {
     "minimum": "12",
     "verified": "12.331",
@@ -45,8 +45,8 @@
   "socket": false,
   "type": "module",
   "url": "https://github.com/luthes/godstein-character-sheet",
-  "manifest": "https://raw.githubusercontent.com/luthes/godstein-character-sheet/main/module.json",
-  "download": "https://github.com/luthes/godstein-character-sheet/archive/v1.0.0.zip",
+  "manifest": "https://github.com/luthes/godstein-character-sheets/releases/download/latest/module.json",
+  "download": "https://github.com/luthes/godstein-character-sheets/releases/download/latest/godstein-character-sheet.zip",
   "license": "MIT",
   "readme": "README.md",
   "bugs": "https://github.com/luthes/godstein-character-sheet/issues",
