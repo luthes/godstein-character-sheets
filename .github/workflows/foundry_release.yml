@@ -12,13 +12,19 @@ jobs:
         shell: bash
         id: get-version
         run: echo "MODULE_VERSION=$(cat ./src/module.json | jq .version)" >> $GITHUB_ENV
-      - name: Verify Version
-        run: echo "Version is $MODULE_VERSION"
+
+      - name: Get Module ID
+        shell: bash
+        id: get-module-id
+        run: echo "MODULE_ID=$(cat ./src/module.json | jq .id)" >> $GITHUB_ENV
+
+      - name: Verify EnvVars
+        run: echo "Module ID -  $MODULE_ID\nModule Verison - $MODULE_VERSION"
 
       - name: Create Zip Archive
         id: create-zip-archive
         shell: bash
-        run: zip -r ./src/$( echo $GITHUB_REPOSITORY | awk -F"/" '{ print $2 }').zip ./src/*
+        run: zip -r ./src/$MODULE_ID.zip ./src/*
 
       - name: Create Release
       # Create an additional release for this version
@@ -26,12 +32,13 @@ jobs:
         uses: ncipollo/release-action@v1
         with:
           allowUpdates: true # set to false if you do not want to allow updates on existing releases
-          name: Release $MODULE_VERSION # Use the version in the name
+          name: Release $MODULE_ID $MODULE_VERSION # Use the version in the name
           draft: false
           prerelease: false
           token: ${{ secrets.GITHUB_TOKEN }}
-          artifacts: './module.json,./$GITHUB_REPOSITORY.zip'
+          artifacts: './src/module.json,./$MODULE_ID.zip'
           tag: $MODULE_VERSION
+
       - name: Create Release
         id: create_latest_release
         uses: ncipollo/release-action@v1
