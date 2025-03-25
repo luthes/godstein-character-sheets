@@ -12,7 +12,14 @@ jobs:
         shell: bash
         id: get-version
         run: echo "MODULE_VERSION=$(cat module.json | jq .version)" >> $GITHUB_ENV
-      - run: zip -r ./src/$( echo $GITHUB_REPOSITORY | awk -F"/" '{ print $2 }').zip ./src/*
+      - name: Verify Version
+        run: echo "Version is $VERSION"
+
+      - name: Create Zip Archive
+        id: create-zip-archive
+        shell: bash
+        run: zip -r ./src/$( echo $GITHUB_REPOSITORY | awk -F"/" '{ print $2 }').zip ./src/*
+
       - name: Create Release
       # Create an additional release for this version
         id: create_versioned_release
