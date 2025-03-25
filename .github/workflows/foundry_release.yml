@@ -6,34 +6,34 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    # Get the version from the `module.json`
-    - name: Get Version
-      shell: bash
-      id: get-version
-      run: echo "MODULE_VERSION=$(cat module.json | jq .version)" >> $GITHUB_ENV
-    - run: zip -r ./src/$($GITHUB_REPOSITORY | awk -F"/" '{ print $2 }').zip ./src/*
-    - name: Create Release
-    # Create an additional release for this version
-      id: create_versioned_release
-      uses: ncipollo/release-action@v1
-      with:
-        allowUpdates: true # set to false if you do not want to allow updates on existing releases
-        name: Release $MODULE_VERSION # Use the version in the name
-        draft: false
-        prerelease: false
-        token: ${{ secrets.GITHUB_TOKEN }}
-        artifacts: './module.json,./$GITHUB_REPOSITORY.zip'
-        tag: $MODULE_VERSION
-    - name: Create Release
-      id: create_latest_release
-      uses: ncipollo/release-action@v1
-      if: endsWith(github.ref, 'main') # Only update the latest release when pushing to the main branch
-      with:
-        allowUpdates: true
-        name: Latest
-        draft: false
-        prerelease: false
-        token: ${{ secrets.GITHUB_TOKEN }}
-        artifacts: './module.json,./$GITHUB_REPOSITORY.zip'
-        tag: latest
+      - uses: actions/checkout@v2
+      # Get the version from the `module.json`
+      - name: Get Version
+        shell: bash
+        id: get-version
+        run: echo "MODULE_VERSION=$(cat module.json | jq .version)" >> $GITHUB_ENV
+      - run: zip -r ./src/$( echo $GITHUB_REPOSITORY | awk -F"/" '{ print $2 }').zip ./src/*
+      - name: Create Release
+      # Create an additional release for this version
+        id: create_versioned_release
+        uses: ncipollo/release-action@v1
+        with:
+          allowUpdates: true # set to false if you do not want to allow updates on existing releases
+          name: Release $MODULE_VERSION # Use the version in the name
+          draft: false
+          prerelease: false
+          token: ${{ secrets.GITHUB_TOKEN }}
+          artifacts: './module.json,./$GITHUB_REPOSITORY.zip'
+          tag: $MODULE_VERSION
+      - name: Create Release
+        id: create_latest_release
+        uses: ncipollo/release-action@v1
+        if: endsWith(github.ref, 'main') # Only update the latest release when pushing to the main branch
+        with:
+          allowUpdates: true
+          name: Latest
+          draft: false
+          prerelease: false
+          token: ${{ secrets.GITHUB_TOKEN }}
+          artifacts: './module.json,./$GITHUB_REPOSITORY.zip'
+          tag: latest
