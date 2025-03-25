@@ -11,7 +11,7 @@ jobs:
       - name: Get Version
         shell: bash
         id: get-version
-        run: echo "MODULE_VERSION=$(cat module.json | jq .version)" >> $GITHUB_ENV
+        run: echo "MODULE_VERSION=$(cat ./src/module.json | jq .version)" >> $GITHUB_ENV
       - name: Verify Version
         run: echo "Version is $MODULE_VERSION"
 
