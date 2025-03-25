@@ -1,5 +1,8 @@
 name: foundry-release-ci
 
+permissions:
+  contents: write
+
 on: [push]
 
 jobs:
@@ -11,12 +14,12 @@ jobs:
       - name: Get Version
         shell: bash
         id: get-version
-        run: echo "MODULE_VERSION=$(cat ./src/module.json | jq .version)" >> $GITHUB_ENV
+        run: echo "MODULE_VERSION=$(cat ./src/module.json | jq -r .version)" >> $GITHUB_OUTPUT
 
       - name: Get Module ID
         shell: bash
         id: get-module-id
-        run: echo "MODULE_ID=$(cat ./src/module.json | jq .id)" >> $GITHUB_ENV
+        run: echo "MODULE_ID=$(cat ./src/module.json | jq -r .id)" >> $GITHUB_OUTPUT
 
       - name: Verify EnvVars
         run: echo "Module ID -  $MODULE_ID\nModule Verison - $MODULE_VERSION"
@@ -27,7 +30,7 @@ jobs:
         run: zip -r ./src/$MODULE_ID.zip ./src/*
 
       - name: Create Release
-      # Create an additional release for this version
+        # Create an additional release for this version
         id: create_versioned_release
         uses: ncipollo/release-action@v1
         with:
@@ -36,7 +39,7 @@ jobs:
           draft: false
           prerelease: false
           token: ${{ secrets.GITHUB_TOKEN }}
-          artifacts: './src/module.json,./$MODULE_ID.zip'
+          artifacts: './src/module.json,./${{ steps.get-module-id.outputs.module-id }}.zip'
           tag: $MODULE_VERSION
 
       - name: Create Release
@@ -49,5 +52,5 @@ jobs:
           draft: false
           prerelease: false
           token: ${{ secrets.GITHUB_TOKEN }}
-          artifacts: './module.json,./$GITHUB_REPOSITORY.zip'
+          artifacts: './module.json,./${{ steps.get-module-id.outputs.module-id }}.zip'
           tag: latest
