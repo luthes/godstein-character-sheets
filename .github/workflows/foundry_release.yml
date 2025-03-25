@@ -13,7 +13,7 @@ jobs:
         id: get-version
         run: echo "MODULE_VERSION=$(cat module.json | jq .version)" >> $GITHUB_ENV
       - name: Verify Version
-        run: echo "Version is $VERSION"
+        run: echo "Version is $MODULE_VERSION"
 
       - name: Create Zip Archive
         id: create-zip-archive
