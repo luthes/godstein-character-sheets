@@ -366,7 +366,7 @@
 }
 
 /* Remove flex: 1 from flexrow and adjust other flex properties */
-.flexrow {
+.godstein .flexrow {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -374,7 +374,7 @@
     align-items: center;
 }
 
-.flexcol {
+.godstein .flexcol {
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
